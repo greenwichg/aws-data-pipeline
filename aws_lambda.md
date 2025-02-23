@@ -1,9 +1,5 @@
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
 
-# Could you please implement the below scenario?
-
-I'll help design and implement this AWS data pipeline scenario using best practices. Here's a comprehensive solution:
-
 # Scalable API-Driven Data Pipeline Architecture on AWS
 
 ## Solution Overview
