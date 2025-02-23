@@ -1,45 +1,5 @@
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
 
-# Can you please help me in understanding below lambda functions in detailed ?
-
-import boto3
-import requests
-from aws_lambda_powertools import Logger
-
-logger = Logger()
-s3 = boto3.client('s3')
-secrets = boto3.client('secretsmanager')
-
-def lambda_handler(event, context):
-try:
-\# Retrieve API config from Secrets Manager
-api_config = secrets.get_secret_value(
-SecretId=event['secret_name']
-)['SecretString']
-
-        response = requests.get(
-            url=api_config['endpoint'],
-            headers={'Authorization': f"Bearer {api_config['api_key']}"},
-            params=event['query_params'],
-            timeout=15
-        )
-        
-        # Store raw response with request ID
-        s3.put_object(
-            Bucket=event['raw_bucket'],
-            Key=f"{api_config['source_id']}/{context.aws_request_id}.json",
-            Body=response.text,
-            ServerSideEncryption='aws:kms'
-        )
-        
-        return {"status": "SUCCESS", "records": len(response.json())}
-    
-    except Exception as e:
-        logger.error(f"Ingestion failed: {str(e)}")
-        raise
-    ---
-Here's a detailed analysis of the Lambda function code with security integrations and operational considerations:
-
 # AWS Lambda API Ingestion Function Analysis
 
 ## 1. Core Function Components
