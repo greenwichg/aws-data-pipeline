@@ -2,7 +2,8 @@
 
 # Could you please implement the below scenario?
 
-I'll help design and implement this AWS data pipeline scenario using best practices from the provided search results. Here's a comprehensive solution:
+I'll help design and implement this AWS data pipeline scenario using best practices from the provided search results. 
+Here's a comprehensive solution:
 
 # Scalable API-Driven Data Pipeline Architecture on AWS
 
