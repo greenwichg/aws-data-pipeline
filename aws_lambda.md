@@ -1,6 +1,6 @@
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
 
-# What does event and context parameter mean in the below lambda function, and could you please explain whole code in depth?
+# What does event and context parameter mean in the lambda function, and could you please explain in depth?
 
 import boto3
 import requests
