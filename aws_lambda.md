@@ -1,20 +1,26 @@
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
 
-# Enhancing the Markdown File: Deep Dive into AWS Lambda `event` and `context` Parameters
+# What does event and context parameter mean in the below lambda function, and could you please explain whole code in depth?
 
+import boto3
+import requests
+
+def lambda_handler(event, context):
+api_config = event['api_config']
+response = requests.get(
+api_config['endpoint'],
+headers=api_config['headers'],
+params=event['query_params']
+)
+s3 = boto3.client('s3')
+s3.put_object(
+Bucket=api_config['raw_bucket'],
+Key=f"{api_config['source_id']}/{context.aws_request_id}.json",
+Body=response.text
+)
+return {"status": "SUCCESS", "records_ingested": len(response.json())}
 ---
-
-This document provides a comprehensive explanation of the `event` and `context` parameters in AWS Lambda functions, accompanied by an enhanced breakdown of the provided code snippet. The enhancements include technical insights, architectural recommendations, best practices, and performance optimizations to improve the implementation.
-
----
-
-## **Introduction**
-
-AWS Lambda is a serverless compute service that allows developers to execute code in response to events without managing servers. At the heart of every Lambda function are two critical parameters: **`event`** and **`context`**. These parameters provide the data and runtime metadata necessary for processing requests effectively.
-
-The **`event`** parameter contains information about the triggering event, such as an API request or an S3 object upload. The **`context`** parameter provides metadata about the execution environment, such as memory allocation, remaining execution time, and request ID.
-
-This document explains these parameters in depth and demonstrates their practical application using an example Lambda function that ingests API data and stores it in Amazon S3.
+Here's a comprehensive analysis of the Lambda function code and its components, incorporating the latest AWS Lambda best practices and architectural patterns:
 
 ---
 
