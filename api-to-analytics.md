@@ -1,20 +1,5 @@
 <img src="https://r2cdn.perplexity.ai/pplx-full-logo-primary-dark%402x.png" class="logo" width="120"/>
 
-# Could you please implement the below scenario?
-
-<<<<<<< HEAD
-· Develop and maintain scalable and reliable data pipelines to ingest data from various APIs into the AWS ecosystem.
-
-· Manage data storage solutions using S3 buckets, ensuring best practices in data organization and security.
-
-· Utilize AWS Redshift for data warehousing tasks, optimizing data retrieval and query performance.
-
-· Configure and use AWS Glue for ETL processes, ensuring data is clean, well-structured, and ready for analysis.
-=======
->>>>>>> 2b3b8de338823bbfde316fdceba3d8ccb524633f
----
-I'll help design and implement this AWS data pipeline scenario using best practices from the provided search results. Here's a comprehensive solution:
-
 # Scalable API-Driven Data Pipeline Architecture on AWS
 
 ## Solution Overview
@@ -80,7 +65,7 @@ def lambda_handler(event, context):
 - Use IAM roles with least privilege access
 - Store API keys in AWS Secrets Manager
 - Enable AWS KMS encryption for S3 objects
-- Implement request timeout (15s in example)
+- Implement request timeout
 - Use VPC endpoints for private API access
 
 
@@ -90,7 +75,7 @@ def lambda_handler(event, context):
 
 ```
 s3://data-lake/
-├── raw/                # Initial API payloads
+├── raw/               # Initial API payloads
 │   ├── source1/
 │   └── source2/
 ├── processed/         # Transformed data
@@ -417,4 +402,3 @@ This implementation follows AWS Well-Architected Framework principles while inco
 [^50]: https://www.reddit.com/r/aws/comments/pmujwh/any_good_guides_on_ingesting_data_from_a_rest_api/
 
 [^51]: https://docs.aws.amazon.com/prescriptive-guidance/latest/patterns/deploy-an-aws-glue-job-with-an-aws-codepipeline-ci-cd-pipeline.html
-
