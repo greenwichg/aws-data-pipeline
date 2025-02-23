@@ -2,23 +2,6 @@
 
 # What does event and context parameter mean in the below lambda function, and could you please explain whole code in depth?
 
-import boto3
-import requests
-
-def lambda_handler(event, context):
-api_config = event['api_config']
-response = requests.get(
-api_config['endpoint'],
-headers=api_config['headers'],
-params=event['query_params']
-)
-s3 = boto3.client('s3')
-s3.put_object(
-Bucket=api_config['raw_bucket'],
-Key=f"{api_config['source_id']}/{context.aws_request_id}.json",
-Body=response.text
-)
-return {"status": "SUCCESS", "records_ingested": len(response.json())}
 ---
 Here's a comprehensive analysis of the Lambda function code and its components, incorporating the latest AWS Lambda best practices and architectural patterns:
 
