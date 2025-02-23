@@ -65,7 +65,7 @@ def lambda_handler(event, context):
 - Use IAM roles with least privilege access
 - Store API keys in AWS Secrets Manager
 - Enable AWS KMS encryption for S3 objects
-- Implement request timeout (15s in example)
+- Implement request timeout
 - Use VPC endpoints for private API access
 
 
