@@ -75,7 +75,7 @@ def lambda_handler(event, context):
 
 ```
 s3://data-lake/
-├── raw/                # Initial API payloads
+├── raw/               # Initial API payloads
 │   ├── source1/
 │   └── source2/
 ├── processed/         # Transformed data
